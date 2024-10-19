@@ -29,7 +29,7 @@
                     @endif
                     
 
-                    @if (auth()->user()->role === 'MANAGER')
+                    @if (auth()->user()->role === 'MANAGER'|| auth()->user()->role === 'ADMIN')
                         @yield('content')   
                     @else
                         <div class="card p-4 my-5 text-center text-danger">

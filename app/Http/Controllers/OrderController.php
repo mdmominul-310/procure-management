@@ -22,6 +22,16 @@ class OrderController extends Controller
 
     public function createOrder(Request $request)
     {
+        // $request->validate([
+        //     'title' => 'required',
+        //     'description' => 'required',
+        //     'category_id' => 'required',
+        //     'item_name' => 'required',
+        //     'item_description' => 'required',
+        //     'item_quantity' => 'required',
+        // ]);
+
+       
         $data = [
             'title' => $request->title,
             'description' => $request->description,
@@ -29,6 +39,7 @@ class OrderController extends Controller
             'category_id' => $request->category_id,
             'status' =>'PENDING',
         ];
+      
         $order = Order::create($data);
 
         foreach ($request->item_name as $i => $value) {
@@ -41,9 +52,15 @@ class OrderController extends Controller
             OrderItem::create($data);
         }
 
+      
+
+        // return redirect()->route('orderlist')->with('success', 'Order created successfully');
+
         return [
             'status' => true
         ];   
+
+
     }
 
     public function details($id)

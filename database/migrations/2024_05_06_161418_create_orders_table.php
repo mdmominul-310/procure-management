@@ -19,7 +19,7 @@ return new class extends Migration
             $table->double('budget')->nullable();
             $table->bigInteger('creator_id');
             $table->bigInteger('category_id')->nullable();
-            $table->enum('status',['OPEN','PROCESSING','COMPLETE','INACTIVE']);
+            $table->enum('status',['OPEN','PROCESSING','COMPLETE','INACTIVE','PENDING','APPROVED'])->default('PENDING');
             $table->timestamps();
         });
     }

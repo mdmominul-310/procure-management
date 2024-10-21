@@ -51,7 +51,7 @@ class ProposalController extends Controller
         $proposal = Proposal::where('id', $id)->first();
         Proposal::where('id', $id)->update(['status'=>'ACCEPT']);
 
-        Order::where('id', $proposal->order_id)->update(['user_id'=> $proposal->user_id, 'status'=>'APPORVED']);
+        Order::where('id', $proposal->order_id)->update(['user_id'=> $proposal->user_id, 'status'=>'PROCESSING']);
 
         return redirect()->back()->with('success', 'Proposal accepted successfully');
 

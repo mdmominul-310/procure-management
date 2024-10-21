@@ -36,7 +36,7 @@
       <td>{{$proposalList->created_at}}</td>
       <td class="">
         <div class="d-flex justify-content-center" style="gap: 6px">
-@if ($proposalList->status === 'SEND' && !in_array($proposalList->order_id, $proposal->pluck('id')->toArray()))
+@if ($proposalList->status === 'SEND' && in_array($proposalList->order_id, $proposal->pluck('id')->toArray()))
           <!-- $isExist = in_array($proposalList->order_id,$proposal); -->
           
           <form action="{{ route('proposal.accept',$proposalList->id) }}" method="post">

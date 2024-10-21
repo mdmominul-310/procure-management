@@ -98,10 +98,10 @@ class OrderController extends Controller
     
     {
       
-        if($request->status === 'APPROVED') {
-            $status = 'APPROVED';
+        if($request->status === 'COMPLETED') {
+            $status = 'COMPLETED';
         } else {
-            $status = 'PENDING';
+            $status = 'PROCESSING';
         }
         $orders = Order::where('status', $status)->where('user_id', auth()->id())->get();
 // print_r($orders);

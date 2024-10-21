@@ -40,15 +40,15 @@
         <td class="text-center">{{ $order->status }}</td>
         <td class="">
           <div class="d-flex justify-content-center" style="gap: 6px;">
-            @if ($order->status === 'OPEN')
+           
               <a class="btn btn-sm btn-success" href="{{ route('super-admin.order.orders.edit',$order->id)}}">Edit</a>
               <form action="{{ route('orders.delete',$order->id) }}" method="post">
                 @csrf
                 <button class="btn btn-sm btn-danger" type="submit">Delete</button>
               </form>  
-            @endif
           
-          <a class="btn btn-sm btn-info" href="{{route('orders.details', $order->id)}}">Details</a>
+          
+          <a class="btn btn-sm btn-info" href="{{route('super-admin.order.details', $order->id)}}">Details</a>
           <td class="text-center"> {{$order->created_at}}</td>
         </div> 
         </td> 

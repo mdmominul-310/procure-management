@@ -1,8 +1,8 @@
-@extends('admin.layouts.master')
+@extends('super-admin.layouts.master')
 
 @section('content')
 
-<form action="{{ route('orders.update',$order->id) }}" method="post" id="create-order-form">
+<form action="{{ route('super-admin.order.update',$order->id) }}" method="post" id="create-order-form">
     @csrf
 <div class="row">
     <div class="col-md-6">
@@ -26,6 +26,17 @@
         <div class="mb-3">
             <label for="exampleFormControlTextarea1" class="form-label">Description</label>
             <textarea name="description" class="form-control" id="exampleFormControlTextarea1" rows="3">{{$order->description}}</textarea>
+        </div>
+    </div>
+
+    <div class="col-md-6">
+        <div class="mb-3">
+            <label for="exampleFormControlInput1" class="form-label">Status</label>
+            <select name="status" class="form-select" aria-label="Default select example">
+                <option value="PENDING" {{$order->status == 'PENDING' ? 'selected' : ''}}>PENDING</option>
+                <option value="APPROVED" {{$order->status == 'APPROVED' ? 'selected' : ''}}>APPROVED</option>
+                <option value="REJECTED" {{$order->status == 'REJECTED' ? 'selected' : ''}}>REJECTED</option>
+            </select>
         </div>
     </div>
 

@@ -72,7 +72,7 @@ class OrderController extends Controller
 
     public function userOrderslist(Request $request)
     {
-        $orders = Order::latest()->where('status', 'OPEN')->paginate(10);
+        $orders = Order::latest()->where('status', 'APPROVED')->paginate(10);
         return view('user.order-list', ['orders'=>$orders, 'page'=>$request->page??1]);
     }
     
@@ -95,14 +95,16 @@ class OrderController extends Controller
 
     // vendor order controller
     public function vendorOrderList(Request $request)
+    
     {
-        if($request->status === 'COMPLETE') {
-            $status = 'COMPLETE';
+      
+        if($request->status === 'APPROVED') {
+            $status = 'APPROVED';
         } else {
-            $status = 'PROCESSING';
+            $status = 'PENDING';
         }
         $orders = Order::where('status', $status)->where('user_id', auth()->id())->get();
-
+// print_r($orders);
         return view('vendor.my-order.vendor-orderlist',compact('orders', 'status'));
     }
     

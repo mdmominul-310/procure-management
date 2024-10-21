@@ -39,10 +39,10 @@ Route::prefix('admin')->group(function () {
     Route::post('/password/reset', [AdminController::class, 'reset'])->name('admin.password.update');
      Route::get('/orderlist', [AdminController::class, 'orderslist'])->name('super-admin.order.orderlist');
     Route::post('/create-order', [OrderController::class, 'createOrder'])->name('super-admin.order.create-order-submit');
-    Route::get('/orders/details/{id}', [OrderController::class, 'details'])->name('super-admin.order.orders.details');
+    Route::get('/orders/details/{id}', [AdminController::class, 'details'])->name('super-admin.order.details');
     Route::post('/orders/delete/{id}', [OrderController::class, 'deleteOrder'])->name('super-admin.order.orders.delete');
-    Route::get('/orders/edit/{id}', [OrderController::class, 'OrderEditForm'])->name('super-admin.order.orders.edit');
-    Route::post('/orders/update/{id}', [OrderController::class, 'updateOrder'])->name('super-admin.order.orders.update');
+    Route::get('/orders/edit/{id}', [AdminController::class, 'OrderEditForm'])->name('super-admin.order.orders.edit');
+    Route::post('/orders/update/{id}', [AdminController::class, 'updateOrder'])->name('super-admin.order.update');
     Route::get('/orders/form/edit{id}', [OrderController::class, 'OrderEditForms'])->name('super-admin.order.orders.form.edit');
     Route::post('/orders/form/edit/update{id}', [OrderController::class, 'OrderEditFormsUpdate'])->name('super-admin.order.orders.form.edit.update');
 });

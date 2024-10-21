@@ -8,11 +8,19 @@
   @section('content')
     <div class="container" style="margin-top: 100px;">
         <form action="" method="get">
-            <div class="d-flex">
-                <select class="form-control me-2" name="status" style="width: 150px;">
-                    <option @selected($status === "PROCESSING") value="PROCESSING">Processing</option>
-                    <option @selected($status === "COMPLETE") value="COMPLETE">Complete</option>
-                </select>
+            <div class="">
+                
+                    <div class="mb-3">
+                        <label for="exampleFormControlInput1" class="form-label">Status</label>
+                        <select name="status" class="form-select" aria-label="Default select example">
+                            <option value="">Select Status</option>
+                            <option value="PENDING" {{ $status == 'PENDING' ? 'selected' : '' }}>PENDING</option>
+                            <option value="APPROVED" {{ $status == 'APPROVED' ? 'selected' : '' }}>APPROVED</option>
+                            <option value="REJECTED" {{ $status == 'REJECTED' ? 'selected' : '' }}>REJECTED</option>
+                            <!-- <option value="SEND" {{ $status == 'SEND' ? 'selected' : '' }}>SEND</option> -->
+                        </select>
+                    </div>
+
                 <button class="btn btn-primary" type="submit">Show data</button>
             </div>    
         </form>

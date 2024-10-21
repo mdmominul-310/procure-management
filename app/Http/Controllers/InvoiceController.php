@@ -42,6 +42,8 @@ class InvoiceController extends Controller
 
         ]);
 
+
+
         return redirect()-> route('vendor.orderList')->with('success', 'Invoice send successfully');
     }
     public function invoiceView($id) //order id

@@ -98,8 +98,8 @@ class OrderController extends Controller
     
     {
       
-        if($request->status === 'COMPLETED') {
-            $status = 'COMPLETED';
+        if($request->status === 'COMPLETE') {
+            $status = 'COMPLETE';
         } else {
             $status = 'PROCESSING';
         }

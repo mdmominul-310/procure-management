@@ -20,6 +20,7 @@
     </tr>
   </thead>
   <tbody>
+    
 
     @forelse ($proposal as $proposalList)
 
@@ -36,9 +37,10 @@
       <td>{{$proposalList->created_at}}</td>
       <td class="">
         <div class="d-flex justify-content-center" style="gap: 6px">
-@if ($proposalList->status === 'SEND' && in_array($proposalList->order_id, $proposal->pluck('id')->toArray()))
+         
+@if ($proposalList->status === 'SEND' && !$proposal->where('order_id', $proposalList->order_id)->where('status', 'ACCEPT')->first())
           <!-- $isExist = in_array($proposalList->order_id,$proposal); -->
-          
+    
           <form action="{{ route('proposal.accept',$proposalList->id) }}" method="post">
             @csrf
             <button class="btn btn-sm btn-success" type="submit">Accept</button>
@@ -50,6 +52,7 @@
           </form> 
           
          <div>    
+        
         @endif
       </td>
     </tr>

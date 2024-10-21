@@ -37,13 +37,24 @@
                     <td><input type="hidden" name="name[]" value="Extra Cost(shipping/tax)" readonly required ></td>
                     <td><input type="hidden" name="quantity[]" value=""  ></td>
                     <td><input type="hidden" name="unit_price[]" value="" >Extra Cost(shipping/tax)</td>
-                    <td><input class="extra"  step="5" type="number" name="total_price[]" min="0" value="0" required ></td>
+                    <td><input class="extra"  step="5" type="number" name="total_price[]" min="0" value="0"
+                   
+                    
+                    required ></td>
                 </tr>
                 <tr>
                     <td></td>
                     <td></td>
                     <td>Total Cost:</td>
-                    <td><input class="main-total"  step="5" type="number" name="total_cost" min="0" value="0" required readonly ></td>
+                    <!-- <td><input class="main-total" data-qty="{{$item->quantity}}"  data-total=".total_price{{$i}}"  step="5" type="number" name="total_cost" min="0" value="0" required readonly ></td> -->
+                      @foreach ($order->orderItems as $i=>$item)
+                
+                    
+                    <td><input class="total_price{{$i}} total-price"  step="5" type="number" name="total_cost" min="0" required readonly ></td>
+               
+                @endforeach
+                                        
+
                 </tr>
               
             </tbody>
